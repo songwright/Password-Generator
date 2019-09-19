@@ -5,7 +5,7 @@ let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 let source = '';
 
 // The length of the desired password
-let length = prompt("How many characters would you like your password to contain?");
+let inputLength = prompt("How many characters would you like your password to contain?");
 
 // Get numeric characters for source.
 let numeric = confirm("Click OK to confirm including numeric characters.")
@@ -32,7 +32,7 @@ if (upper) {
 if (source === '') {
   alert("You must select at least one character type.");
 } else {
-  alert(makePassword(length));
+  alert(makePassword(inputLength));
 }
 
 // Make password from source string.
