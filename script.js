@@ -4,36 +4,49 @@ let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 // Characters from the arrays will be joined into a string called "source."
 let source = '';
 
-// The length of the desired password
-let inputLength = prompt("How many characters would you like your password to contain?");
+function setUpPW () {
 
-// Get numeric characters for source.
-let numeric = confirm("Click OK to confirm including numeric characters.")
+  // The length of the desired password
+  let inputLength = prompt("How many characters would you like your password to contain?");
 
-if (numeric) {
-  source = source + numerals.join('');
+  if (inputLength < 8) {
+    alert("Password length must be at least 8 characters.");
+    return;
+  } else if (inputLength > 128) {
+    alert("Password length must less than 129 characters.");
+    return;
+  }
+
+  // Get numeric characters for source.
+  let numeric = confirm("Click OK to confirm including numeric characters.")
+
+  if (numeric) {
+    source = source + numerals.join('');
+  }
+
+  // Get lowercase characters for source.
+  let lower = confirm("Click OK to confirm including lowercase characters.")
+
+  if (lower) {
+    source = source + lowerCase.join('');
+  }
+
+  // Get uppercase characters for source.
+  let upper = confirm("Click OK to confirm including uppercase characters.")
+
+  if (upper) {
+    source = source + upperCase.join('');
+  }
+
+  // Show password.
+  if (source === '') {
+    alert("You must select at least one character type.");
+  } else {
+    alert(makePassword(inputLength));
+  }
 }
 
-// Get lowercase characters for source.
-let lower = confirm("Click OK to confirm including lowercase characters.")
-
-if (lower) {
-  source = source + lowerCase.join('');
-}
-
-// Get uppercase characters for source.
-let upper = confirm("Click OK to confirm including uppercase characters.")
-
-if (upper) {
-  source = source + upperCase.join('');
-}
-
-// Show password.
-if (source === '') {
-  alert("You must select at least one character type.");
-} else {
-  alert(makePassword(inputLength));
-}
+setUpPW();
 
 // Make password from source string.
 function makePassword(pwLength) {
