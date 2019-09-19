@@ -15,6 +15,9 @@ function setUpPW () {
   } else if (inputLength > 128) {
     alert("Password length must less than 129 characters.");
     return;
+  } else if (isNaN(inputLength)) {
+    alert("Password length must be provided as a number.");
+    return;
   }
 
   // Get numeric characters for source.
