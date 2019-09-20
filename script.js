@@ -23,6 +23,13 @@ function setUpPW () {
     return;
   }
 
+  // Get special characters for source.
+  let special = confirm("Click OK to confirm including special characters.")
+
+  if (special) {
+    source = source + specialCharacters.join('');
+  }
+
   // Get numeric characters for source.
   let numeric = confirm("Click OK to confirm including numeric characters.")
 
@@ -47,12 +54,11 @@ function setUpPW () {
   // Show password.
   if (source === '') {
     alert("You must select at least one character type.");
-  } else {
-    alert(makePassword(inputLength));
+    return;
   }
 }
 
-setUpPW();
+// setUpPW();
 
 // Make password from source string.
 function makePassword(pwLength) {
@@ -62,3 +68,8 @@ function makePassword(pwLength) {
   }
   return pw;
 }
+
+// Get references to the #copy and #generate elements
+let copyBtn = document.querySelector("#copy");
+let generateBtn = document.querySelector("#generate");
+
