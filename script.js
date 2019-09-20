@@ -4,6 +4,7 @@ let specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", 
 let numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
 // Characters from the arrays will be joined into a string called "source."
 let source = '';
 
@@ -56,9 +57,8 @@ function setUpPW () {
     alert("You must select at least one character type.");
     return;
   }
+  return makePassword(inputLength);
 }
-
-// setUpPW();
 
 // Make password from source string.
 function makePassword(pwLength) {
@@ -73,3 +73,16 @@ function makePassword(pwLength) {
 let copyBtn = document.querySelector("#copy");
 let generateBtn = document.querySelector("#generate");
 
+// Write password to the #password input
+function writePassword() {
+  let password = setUpPW();
+  let passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+  source = '';
+  copyBtn.removeAttribute("disabled");
+  copyBtn.focus();
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
