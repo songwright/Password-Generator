@@ -79,10 +79,25 @@ function writePassword() {
   let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  // reset source string
   source = '';
   copyBtn.removeAttribute("disabled");
   copyBtn.focus();
 }
 
+function copyToClipboard() {
+  var passwordText = document.querySelector("#password");
+
+  passwordText.select();
+  document.execCommand("copy");
+
+  alert(
+    "Your password " + passwordText.value + " was copied to your clipboard."
+  );
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// Add event listener to copy button
+copyBtn.addEventListener("click", copyToClipboard);
