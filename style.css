@@ -54,18 +54,24 @@ header {
   min-height: 100px;
 }
 
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .card-footer::before {
-  content: " ";
+  /* content: " ";
   display: block;
   width: 100%;
   background: #e7e9eb;
-  height: 2px;
+  height: 2px; */
 }
 
 .card-footer::after {
-  content: " ";
+  /* content: " ";
   display: block;
-  clear: both;
+  clear: both; */
 }
 
 .btn {
@@ -90,7 +96,7 @@ button[disabled] {
 }
 
 .float-right {
-  float: right;
+  /* float: right; */
 }
 
 #password {
