@@ -17,6 +17,15 @@ body {
   background-color: #f9fbfd;
 }
 
+input {
+  font-size: 1rem;
+}
+
+.checkbox {
+  height: 20px;
+  width: 20px;
+}
+
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
@@ -60,20 +69,6 @@ header {
   justify-content: space-around;
 }
 
-.card-footer::before {
-  /* content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px; */
-}
-
-.card-footer::after {
-  /* content: " ";
-  display: block;
-  clear: both; */
-}
-
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
@@ -84,7 +79,7 @@ header {
   display: inline-block;
   font-size: 22px;
   line-height: 22px;
-  margin: 16px 16px 16px 20px;
+  margin: 16px 16px 16px 16px;
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
@@ -95,8 +90,9 @@ button[disabled] {
   background: #c0c7cf;
 }
 
-.float-right {
-  /* float: right; */
+.pw-form {
+  padding: 20px 0;
+  line-height: 1.5;
 }
 
 #password {
@@ -106,10 +102,7 @@ button[disabled] {
   border: none;
   display: block;
   width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
+  padding: 15px;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 10px;
