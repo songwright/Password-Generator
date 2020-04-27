@@ -38,19 +38,19 @@ function makePassword() {
   // Check for types of characters that will be used for the password.
 
   if (special.checked) {
-    source = source + specialCharacters.join('');
+    source += specialCharacters.join('');
   }
   
   if (numeral.checked) {
-    source = source + numerals.join('');
+    source += numerals.join('');
   }
 
   if (lowercase.checked) {
-    source = source + lowerCaseLetters.join('');
+    source += lowerCaseLetters.join('');
   }
   
   if (uppercase.checked) {
-    source = source + upperCaseLetter.join('');
+    source += upperCaseLetter.join('');
   }
 
   for (let i = 0; i < characterNumber; i++) {
