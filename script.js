@@ -11,6 +11,14 @@ let copyBtn = document.querySelector("#copy");
 // Add event listener to Copy to Clipboard button
 copyBtn.addEventListener("click", copyToClipboard);
 
+// Pull a random character from an array.
+function randomPick(arr) {
+  // Pick a charcter from a random index.
+  let pickIndex = Math.floor(Math.random() * arr.length);
+  let randomEl = arr[pickIndex];
+  return randomEl;
+}
+
 // Copy the password to the clipboard.
 function copyToClipboard() {
   var passwordText = document.querySelector("#password");
