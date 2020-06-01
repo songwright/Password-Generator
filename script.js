@@ -11,13 +11,27 @@ let copyBtn = document.querySelector("#copy");
 // Add event listener to Copy to Clipboard button
 copyBtn.addEventListener("click", copyToClipboard);
 
+// An array shuffler based on the Fisher-Yates shuffle algorithm
+function shuffler(arr) {
+  let newPosition,
+      temp;
+
+  for (let i = arr.length - 1; i > 0; i--) {
+    newPosition = Math.floor(Math.random() * (i + 1));
+    temp = arr[i];
+    arr[i] = arr[newPosition];
+    arr[newPosition] = temp;
+  }
+  return arr;
+};
+
 // Pull a random character from an array.
 function randomPick(arr) {
-  // Pick a charcter from a random index.
+  // Pick a character from a random index.
   let pickIndex = Math.floor(Math.random() * arr.length);
   let randomEl = arr[pickIndex];
   return randomEl;
-}
+};
 
 // Copy the password to the clipboard.
 function copyToClipboard() {
@@ -29,51 +43,75 @@ function copyToClipboard() {
   alert(
     "Your password " + passwordText.value + " was copied to your clipboard."
   );
-}
+};
 
 function makePassword() {
   event.preventDefault();
-  
+
+  // A string containing the sources for the password characters
   let source = "";
+  // The password
   let pw = "";
+  // An array that ensures at least one of each type is used
+  let requiredCharacters = [];
+  // The users choice of password length
   const characterNumber = document.getElementById("characterNum").value;
 
   if (!characterNumber) {
     alert("You must enter a number.");
     return;
-  }
+  };
 
   // Check for types of characters that will be used for the password.
 
   if (special.checked) {
     source += specialCharacters.join('');
-  }
-  
+    requiredCharacters.push(randomPick(specialCharacters));
+  };
+
   if (numeral.checked) {
     source += numerals.join('');
-  }
+    requiredCharacters.push(randomPick(numerals));
+  };
 
   if (lowercase.checked) {
     source += lowerCaseLetters.join('');
-  }
-  
+    requiredCharacters.push(randomPick(lowerCaseLetters));
+  };
+
   if (uppercase.checked) {
     source += upperCaseLetter.join('');
-  }
+    requiredCharacters.push(randomPick(upperCaseLetter));
+  };
 
+  // Create password from source string.
   for (let i = 0; i < characterNumber; i++) {
-    pw += source[Math.floor(Math.random() * source.length)];
+    pw += randomPick(source);
     if (source === '') {
+      // Return fail message if no character types were chosen.
       alert("You must select at least one type of character.");
       return;
-    }
-  }
+    };
+  };
+
+  // Split the password for required character insertion.
+  pw = pw.split('');
+
+  // Insert the required characters into the password.
+  for (let i = 0; i < requiredCharacters.length; i++) {
+    // Insert the required characters into the password.
+    pw[i] = requiredCharacters[i];
+  };
+  
+  // Shuffle the required characters into the password.
+  pw = shuffler(pw).join('');
 
   let passwordText = document.querySelector("#password");
 
+  // Print password to web page.
   passwordText.value = pw;
 
   // Enable Copy to Clipboard button
   copyBtn.removeAttribute("disabled");
   copyBtn.focus();
-}
+};
